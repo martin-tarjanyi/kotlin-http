@@ -1,2 +1,4 @@
-# Project exclude paths
-/target/
+# Default ignored files
+.idea/
+target/
+*.iml
