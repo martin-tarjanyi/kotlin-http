@@ -7,7 +7,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*
 
-val client by lazy {
+fun createClient(customize: HttpClientConfig<CIOEngineConfig>.() -> Unit = {}) =
     HttpClient(CIO) {
         install(JsonFeature) {
             serializer = JacksonSerializer(
@@ -16,5 +16,5 @@ val client by lazy {
                     .enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
             )
         }
+        customize()
     }
-}
