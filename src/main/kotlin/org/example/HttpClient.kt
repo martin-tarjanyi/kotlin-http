@@ -14,6 +14,7 @@ fun createClient(customize: HttpClientConfig<CIOEngineConfig>.() -> Unit = {}) =
                 ObjectMapper()
                     .registerModule(KotlinModule(nullIsSameAsDefault = true))
                     .enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
+                    .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             )
         }
         customize()
