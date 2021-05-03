@@ -17,6 +17,8 @@
         <junit.version>4.12</junit.version>
         <ktor.version>1.5.3</ktor.version>
         <jackson.version>2.12.0</jackson.version>
+        <resilience4j.version>1.7.0</resilience4j.version>
+        <maven.compiler.release>15</maven.compiler.release>
     </properties>
 
     <dependencyManagement>
@@ -32,6 +34,13 @@
                 <groupId>io.ktor</groupId>
                 <artifactId>ktor-bom</artifactId>
                 <version>${ktor.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.resilience4j</groupId>
+                <artifactId>resilience4j-bom</artifactId>
+                <version>${resilience4j.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -75,6 +84,14 @@
             <artifactId>jackson-module-kotlin</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-ratelimiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-kotlin</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -86,6 +103,9 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
+                <configuration>
+                    <jvmTarget>${maven.compiler.release}</jvmTarget>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>

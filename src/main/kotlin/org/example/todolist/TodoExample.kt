@@ -6,6 +6,8 @@ import io.ktor.http.*
 import kotlinx.coroutines.coroutineScope
 import org.example.asyncAll
 import org.example.createClient
+import org.example.rateLimiter
+import java.time.Duration
 
 val todoClient by lazy {
     createClient {
@@ -14,6 +16,10 @@ val todoClient by lazy {
                 protocol = URLProtocol.HTTPS
                 host = "jsonplaceholder.typicode.com"
             }
+        }
+        rateLimiter {
+            limitForPeriod = 5
+            limitRefreshPeriod = Duration.ofSeconds(1)
         }
     }
 }
