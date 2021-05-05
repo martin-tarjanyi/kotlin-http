@@ -1,4 +1,4 @@
 package org.example
 
-fun requiredProperty(propertyName: String) =
-    requireNotNull(System.getProperty(propertyName)) { "$propertyName property is mandatory" }
+fun property(propertyName: String, default: String? = null) =
+    requireNotNull(System.getProperty(propertyName, default)) { "$propertyName property is mandatory" }
