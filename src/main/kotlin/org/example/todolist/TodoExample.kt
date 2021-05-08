@@ -18,13 +18,13 @@ val todoClient by lazy {
             }
         }
         rateLimiter {
-            limitForPeriod = 5
+            limitForPeriod = 20
             limitRefreshPeriod = Duration.ofSeconds(1)
         }
     }
 }
 
-suspend fun main() = coroutineScope {
+suspend fun main(): Unit = coroutineScope {
     val todos = todoClient.get<List<Todo>>("/todos/")
 
     todos

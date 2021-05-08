@@ -12,10 +12,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.4.32</kotlin.version>
+        <kotlin.version>1.5.0</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.12</junit.version>
-        <ktor.version>1.5.3</ktor.version>
+        <ktor.version>1.5.4</ktor.version>
         <jackson.version>2.12.0</jackson.version>
         <resilience4j.version>1.7.0</resilience4j.version>
         <maven.compiler.release>15</maven.compiler.release>
