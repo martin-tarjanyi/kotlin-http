@@ -1,6 +1,7 @@
 package org.example.todolist
 
-import io.ktor.client.features.*
+import io.ktor.client.call.*
+import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.coroutineScope
@@ -25,10 +26,10 @@ val todoClient by lazy {
 }
 
 suspend fun main(): Unit = coroutineScope {
-    val todos = todoClient.get<List<Todo>>("/todos/")
+    val todos = todoClient.get("/todos/").body<List<Todo>>()
 
     todos
-        .asyncAll { todoClient.get<Todo>("/todos/${it.id}") }
+        .asyncAll { todoClient.get("/todos/${it.id}").body<Todo>() }
         .forEach { println(it) }
 }
 
